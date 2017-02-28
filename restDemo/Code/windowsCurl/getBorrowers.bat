@@ -1,0 +1,1 @@
+curl -s -X GET --header "Accept: application/json" --header "Authorization: Bearer 123" "https://asworkflow.azurewebsites.net/api/borrowers?term=b"
