@@ -20,10 +20,11 @@ All code here is MIT licensed, which means it's provided free of charge, but wit
 ## Sample Workflows
 
 #### Rest API DEMO
-\restDemo
+[\restDemo](https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFilename)
+
 This sample workflow is a demonstration of using scripts to interface AutoStore with REST APIs
 
 #### AutoCapture Optional Filename
-\autoCaptureOptionalFilename
+[\autoCaptureOptionalFilename](https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFilename)
 
 This sample workflow is a demonstration of using a script to conditionally rename a file
