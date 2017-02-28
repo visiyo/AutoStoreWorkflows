@@ -16,3 +16,14 @@ info@visiyo.com
 
 ## License
 All code here is MIT licensed, which means it's provided free of charge, but with no warranty.  See the LICENSE.md file for more details.
+
+## Sample Workflows
+
+#### Rest API DEMO
+\restDemo
+This sample workflow is a demonstration of using scripts to interface AutoStore with REST APIs
+
+#### AutoCapture Optional Filename
+\autoCaptureOptionalFilename
+
+This sample workflow is a demonstration of using a script to conditionally rename a file
