@@ -19,6 +19,8 @@ All code here is MIT licensed, which means it's provided free of charge, but wit
 
 ## Sample Workflows
 
+**Below is a small sample of workflows.  We will be uploading new workflows weekly.**
+
 #### Rest API DEMO
 [\restDemo](https://github.com/visiyo/AutoStoreWorkflows/tree/master/restDemo)
 
