@@ -1,4 +1,4 @@
-# Nuance (formerly NSi) AutoStore Workflows (the first Open Source AutoStore project on GitHub)
+# AutoStore Workflows (the first Open Source AutoStore project on GitHub)
 
 ## Overview
 
