@@ -1,4 +1,4 @@
-# AutoStore Workflows
+# AutoStore Workflows (the first Open Source AutoStore project on GitHub)
 
 ## Overview
 
@@ -19,8 +19,10 @@ All code here is MIT licensed, which means it's provided free of charge, but wit
 
 ## Sample Workflows
 
+*Below is a small sample of workflows.  We will be uploading new workflows weekly.*
+
 #### Rest API DEMO
-[\restDemo](https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFilename)
+[\restDemo](https://github.com/visiyo/AutoStoreWorkflows/tree/master/restDemo)
 
 This sample workflow is a demonstration of using scripts to interface AutoStore with REST APIs
 
