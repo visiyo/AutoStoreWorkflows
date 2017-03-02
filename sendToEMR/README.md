@@ -25,6 +25,8 @@ https://github.com/visiyo/AutoStoreWorkflows/tree/master/sendToEMR
 Run this code from this directory
 `C:\AutoStoreWorkflows\sendToEMR`
 
+**Before running AutoStore, open every task, and every capture component.  Then click "ok".  This will auto create all temp directories**
+
 **Be sure to copy the file /tools/System.Web.Extensions.dll to the AutoStore directory in Progam Files**
 
 ## Video

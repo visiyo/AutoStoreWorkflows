@@ -17,6 +17,8 @@ https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFile
 Run this code from this directory
 `C:\AutoStoreWorkflows\autoCaptureOptionalFilename`
 
+**Before running AutoStore, open every task, and every capture component.  Then click "ok".  This will auto create all temp directories**
+
 ## Video
 Demo and training video here: https://youtu.be/GSZSFCqFwvU
 
