@@ -1,7 +1,7 @@
-Const SECURITY_TOKEN = "dphykpgcta38a4t36vh8r8r6"
+Const SECURITY_TOKEN = "386wjf5kubnbpw2grwqk8t77"
 ' Const SECURITY_TOKEN = "123"
 
-Sub SendToAPI_OnLoad
+Sub sendToAthena_OnLoad
 	EKOManager.StatusMessage ("patientId = " & patientId)
 
 	Set KDocument = KnowledgeObject.GetFirstDocument
@@ -24,39 +24,41 @@ Sub SendToAPI_OnLoad
 
 End Sub
 
-Sub SendToAPI_OnUnload
+Sub sendToAthena_OnUnload
 
 End Sub
 
 ' Uncomment below to test
-Call SendDocument(33, "C:\AutoStoreWorkflows\sendToEMR\Samples\sample.pdf")
+' Call SendDocument(33, "C:\AutoStoreWorkflows\sendToEMR\Samples\sample.pdf")
 Function SendDocument(patientId, DocPath)
 
 	Set HTTP = CreateObject("Microsoft.XMLHTTP")
 
 	Dim FileContents: FileContents = ReadBinaryFile(docPath)
 	Dim FieldName: FieldName = "attachmentcontents"
-	
+
 	Const Boundary = "---------------------------athenaUploadBoundary"
 
 	Dim FormData: FormData = BuildFormData(FileContents, Boundary, "Scan.pdf", FieldName)
-	' msgbox FormData
+
 	url = "https://api.athenahealth.com/preview1/195900/patients/" & patientId & "/documents"
-	' url = "https://spark.ngrok.io/api/documents-multipart"
-	' msgbox url
-	
+	' url = "https://asworkflow.azurewebsites.net/api/documents-multipart"
+
 	HTTP.Open "POST", url, False
 	HTTP.setRequestHeader "Content-Type", "multipart/form-data; boundary=" & Boundary & vbcrlf
 	HTTP.setRequestHeader "Authorization", "Bearer " & SECURITY_TOKEN
 	On Error Resume Next
 	HTTP.send FormData
-	If Err.Number <> 0 Then
-		msgbox Err.Description		
-	Else
-		msgbox HTTP.status
-		msgbox HTTP.StatusText
+
+	If False Then ' Change to true in testing
+		If Err.Number <> 0 Then
+			msgbox Err.Description
+		Else
+			msgbox HTTP.status
+			msgbox HTTP.StatusText
+		End If
 	End If
-	
+
 
 	' msgbox HTTP.responseText
 	SendDocument = HTTP.status ' Expect 201, need to fail if not
@@ -66,7 +68,7 @@ End Function
 Function BuildFormData(FileContents, Boundary, FileName, FieldName)
 	Dim FormData, Pre, Po
 	Const ContentType = "application/upload"
-  
+
 	'The two parts around file contents In the multipart-form data.
 	Pre = "--" + Boundary + vbCrLf + mpFields(FieldName, FileName, ContentType)
 	' Po = vbCrLf + "--" + Boundary + "--" + vbCrLf
@@ -74,7 +76,7 @@ Function BuildFormData(FileContents, Boundary, FileName, FieldName)
 	Po = vbCrLf + "--" + Boundary + vbCrLf + "Content-Disposition: form-data; name=""documentsubclass""" + vbCrlf + vbCrlf & _
 		"ADMIN_CONSENT" & _
 		vbCrlf & "--" + Boundary + "--" + vbCrlf
-	
+
 	'Build form data using recordset binary field
 	Const adLongVarBinary = 205
 	Dim RS: Set RS = CreateObject("ADODB.Recordset")
@@ -87,18 +89,18 @@ Function BuildFormData(FileContents, Boundary, FileName, FieldName)
 	RS("b").AppendChunk (StringToMB(Pre) & ChrB(0))
 	Pre = RS("b").GetChunk(LenData)
 	RS("b") = ""
-    
+
 	'Convert Po string value To a binary data
 	LenData = Len(Po)
 	RS("b").AppendChunk (StringToMB(Po) & ChrB(0))
 	Po = RS("b").GetChunk(LenData)
 	RS("b") = ""
-    
+
 	'Join Pre + FileContents + Po binary data
 	RS("b").AppendChunk (Pre)
 	RS("b").AppendChunk (FileContents)
 	RS("b").AppendChunk (Po)
-	
+
 	RS.Update
 	FormData = RS("b")
 	RS.Close
@@ -158,4 +160,3 @@ private function encodeBase64(bytes)
 	EL.NodeTypedValue = bytes
 	encodeBase64 = EL.Text
 End Function
-

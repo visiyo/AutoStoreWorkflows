@@ -8,7 +8,7 @@ This sample workflow is a demonstration of using a script to conditionally renam
 Thank you Paul Kroon, from kroon-office-solutions.nl for the suggestion
 
 ## Repo
-https://github.com/visiyo/AutoStoreWorkflows/autoCaptureOptionalFilename
+https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFilename
 
 ## Version
 1.0

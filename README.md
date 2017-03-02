@@ -24,6 +24,11 @@ All code here is MIT licensed, which means it's provided free of charge, but wit
 
 This sample workflow is a demonstration of using scripts to interface AutoStore with REST APIs
 
+#### Rest API DEMO sending to Electonic Medical Records
+[\sendToEMR](https://github.com/visiyo/AutoStoreWorkflows/tree/master/sendToEMR)
+
+Need to scan or send documents to an EMR?  In this repo, I'm showing how to use AutoStore to search for a patient and scan documents to Athena Health's REST API.
+
 #### AutoCapture Optional Filename
 [\autoCaptureOptionalFilename](https://github.com/visiyo/AutoStoreWorkflows/tree/master/autoCaptureOptionalFilename)
 

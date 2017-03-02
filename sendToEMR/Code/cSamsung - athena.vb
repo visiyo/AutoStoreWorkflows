@@ -14,7 +14,7 @@ Imports System.Text
 Imports System.Web.Script.Serialization
 
 Module Script
-	Const SECURITY_TOKEN As String = "uyhk3cy427rqc5mzsrewu2wz" ' REPLACE WITH YOUR KEY HERE https://developer.athenahealth.com/io-docs
+	Const SECURITY_TOKEN As String = "386wjf5kubnbpw2grwqk8t77" ' REPLACE WITH YOUR KEY HERE https://developer.athenahealth.com/io-docs
 
     Sub Form_OnLoad(ByVal eventData As MFPEventData)
 		' Call GetPatients(eventData, "smith")

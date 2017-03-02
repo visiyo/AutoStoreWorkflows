@@ -14,7 +14,7 @@ Be sure to see the video linked below
 - VBScript (Capture, Process)
 
 ## Repo
-https://github.com/visiyo/AutoStoreWorkflows/restDemo
+https://github.com/visiyo/AutoStoreWorkflows/tree/master/restDemo
 
 ## Version
 1.0

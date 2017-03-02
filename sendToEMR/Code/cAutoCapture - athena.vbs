@@ -1,17 +1,17 @@
-Const SECURITY_TOKEN = "5cwseb8rdmyh276xsyrv4ydk"
+Const SECURITY_TOKEN = "386wjf5kubnbpw2grwqk8t77"
 
 
 Sub Form_OnLoad(Form)
 	GetPatients(Form)
-End Sub 
+End Sub
 
 ' Call GetPatients("") - will fail with Form
 Sub GetPatients(Form)
-	
+
 	Dim HTTP, url
 
 	Set HTTP = CreateObject("Microsoft.XMLHTTP")
-	
+
 	url = "https://api.athenahealth.com/preview1/195900/patients?guarantorcountrycode3166=US&limit=25&lastname=smith&nocache=" & Date
 
 	HTTP.Open "GET", url, False
@@ -37,7 +37,7 @@ End Sub
 
 
 Function Field_OnValidate(FieldName, FieldValue)
-	
+
 End Function
 
 Sub Button_OnClick(Form, ButtonName)
@@ -71,7 +71,7 @@ Class VbsJson
 		StringChunk.MultiLine = True
 		StringChunk.IgnoreCase = True
 	End Sub
-    
+
 	'Return a JSON string representation of a VBScript data structure
 	'Supports the following objects and types
 	'+-------------------+---------------+
@@ -183,7 +183,7 @@ Class VbsJson
 			Decode = ScanOnce(str, 1)
 		End If
 	End Function
-    
+
 	Private Function ScanOnce(ByRef str, ByRef idx)
 		Dim c, ms
 
@@ -215,14 +215,14 @@ Class VbsJson
 			ScanOnce = False
 			Exit Function
 		End If
-        
+
 		Set ms = NumberRegex.Execute(Mid(str, idx))
 		If ms.Count = 1 Then
 			idx = idx + ms(0).Length
 			ScanOnce = CDbl(ms(0))
 			Exit Function
 		End If
-        
+
 		Err.Raise 8732,,"No JSON object could be ScanOnced"
 	End Function
 
@@ -231,7 +231,7 @@ Class VbsJson
 		Set ParseObject = CreateObject("Scripting.Dictionary")
 		idx = SkipWhitespace(str, idx)
 		c = Mid(str, idx, 1)
-        
+
 		If c = "}" Then
 			Exit Function
 		ElseIf c <> """" Then
@@ -239,7 +239,7 @@ Class VbsJson
 		End If
 
 		idx = idx + 1
-        
+
 		Do
 			key = ParseString(str, idx)
 
@@ -248,7 +248,7 @@ Class VbsJson
 				Err.Raise 8732,,"Expecting : delimiter"
 			End If
 
-			
+
 			idx = SkipWhitespace(str, idx + 1)
 
 			If Mid(str, idx, 1) = "{" Then
@@ -285,7 +285,7 @@ Class VbsJson
 
 		idx = idx + 1
 	End Function
-    
+
 	Private Function ParseArray(ByRef str, ByRef idx)
 		Dim c, values, value
 		Set values = CreateObject("Scripting.Dictionary")
@@ -320,7 +320,7 @@ Class VbsJson
 		idx = idx + 1
 		ParseArray = values.Items
 	End Function
-    
+
 	Private Function ParseString(ByRef str, ByRef idx)
 		Dim chunks, content, terminator, ms, esc, char
 		Set chunks = CreateObject("Scripting.Dictionary")
@@ -330,21 +330,21 @@ Class VbsJson
 			If ms.Count = 0 Then
 				Err.Raise 8732,,"Unterminated string starting"
 			End If
-            
+
 			content = ms(0).Submatches(0)
 			terminator = ms(0).Submatches(1)
 			If Len(content) > 0 Then
 				chunks.Add chunks.Count, content
 			End If
-            
+
 			idx = idx + ms(0).Length
-            
+
 			If terminator = """" Then
 				Exit Do
 			ElseIf terminator <> "\" Then
 				Err.Raise 8732,,"Invalid control character"
 			End If
-            
+
 			esc = Mid(str, idx, 1)
 
 			If esc <> "u" Then
@@ -379,5 +379,3 @@ Class VbsJson
 		SkipWhitespace = idx
 	End Function
 End Class
-
-
