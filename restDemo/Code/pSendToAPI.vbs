@@ -1,6 +1,6 @@
 Const URL_UPLOAD_DOCUMENT = "https://asworkflow.azurewebsites.net/api/documents"
 
-Const SECURITY_TOKEN = "123"
+Const SECURITY_TOKEN = "123" ' in a real RESTI API, you would need to get this programmatically
 
 Sub SendToAPI_OnLoad
 	EKOManager.StatusMessage ("documentTypeId = " & documentTypeId)
