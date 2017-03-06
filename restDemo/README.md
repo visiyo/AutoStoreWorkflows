@@ -3,7 +3,7 @@
 ## Overview
 This sample workflow is a demonstration of using scripts to interface AutoStore with REST APIs
 
-This demo uses a demo REST API here:
+This demo uses a demo REST API here, you should check it out before proceeding:
 https://asworkflow.azurewebsites.net/swagger/index.html
 
 Be sure to see the video linked below
