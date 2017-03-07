@@ -1,0 +1,4 @@
+./Temp/**/*.dat
+./Temp/**/.tif*
+./Temp/**/.xml
+./Temp/**/.pdf

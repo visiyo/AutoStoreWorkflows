@@ -29,7 +29,7 @@ Sub sendToAthena_OnUnload
 End Sub
 
 ' Uncomment below to test
-' Call SendDocument(33, "C:\AutoStoreWorkflows\sendToEMR\Samples\sample.pdf")
+Call SendDocument(33, "C:\AutoStoreWorkflows\sendToEMR\Samples\sample.pdf")
 Function SendDocument(patientId, DocPath)
 
 	Set HTTP = CreateObject("Microsoft.XMLHTTP")
@@ -43,6 +43,7 @@ Function SendDocument(patientId, DocPath)
 
 	url = "https://api.athenahealth.com/preview1/195900/patients/" & patientId & "/documents"
 	' url = "https://asworkflow.azurewebsites.net/api/documents-multipart"
+	' url = "http://10.1.10.26:4000/api/documents-multipart"
 
 	HTTP.Open "POST", url, False
 	HTTP.setRequestHeader "Content-Type", "multipart/form-data; boundary=" & Boundary & vbcrlf
@@ -74,8 +75,10 @@ Function BuildFormData(FileContents, Boundary, FileName, FieldName)
 	' Po = vbCrLf + "--" + Boundary + "--" + vbCrLf
 
 	Po = vbCrLf + "--" + Boundary + vbCrLf + "Content-Disposition: form-data; name=""documentsubclass""" + vbCrlf + vbCrlf & _
-		"ADMIN_CONSENT" & _
-		vbCrlf & "--" + Boundary + "--" + vbCrlf
+		"ADMIN_CONSENT" & vbCrLf + _
+		' "--" + Boundary + vbCrLf + "Content-Disposition: form-data; name=""another""" + vbCrlf + vbCrlf & _
+		' "TEST" & vbCrlf & _
+		"--" + Boundary + "--" + vbCrlf
 
 	'Build form data using recordset binary field
 	Const adLongVarBinary = 205
